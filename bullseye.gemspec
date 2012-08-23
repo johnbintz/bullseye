@@ -17,4 +17,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'tilt'
   gem.add_dependency 'sprockets'
+  gem.add_dependency 'sass'
 end

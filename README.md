@@ -1,13 +1,13 @@
 # Bullseye!
 
 An *extremely quickly written* shoot-from-the-hip implementation of [so-called Garber-Irish DOM-ready execution](http://viget.com/inspire/extending-paul-irishs-comprehensive-dom-ready-execution)
-for the Rails asset pipeline. Could work with other Sprockets stuff down the road, too. But for now, it's
+for the Rails asset pipeline. Even provides functionalty for Sass to target those pages! Could work with other Sprockets stuff down the road, too. But for now, it's
 pretty married to Rails. Also, needs tests for the exactly four things that it does. Anyone wanna add exactly four Cucumber features?
 
 ## Why?
 
 I got sick of on-page JavaScript. Also I like using the Asset Pipeline for what it's actually intended for,
-reducing the number of HTTP requests.
+reducing the number of HTTP requests. Finally, targeting pages in Sass should be easy.
 
 ## How?
 
@@ -49,6 +49,14 @@ alert("I am showing a site");
 # app/assets/javascripts/bullseye/sites/show.bullseye.coffee
 
 alert "I am also showing a site"
+```
+
+Want to target that page in your Sass? Use a little string interpolation and a function that generates a selector:
+
+``` sass
+#{bullseye('sites/show')} {
+  background-color: green;
+}
 ```
 
 Piece of cake.
