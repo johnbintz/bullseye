@@ -1,6 +1,6 @@
 # Bullseye!
 
-An *extremely fast* shoot-from-the-hip implementation of [so-called Garber-Irish DOM-ready execution](http://viget.com/inspire/extending-paul-irishs-comprehensive-dom-ready-execution)
+An *extremely quickly written* shoot-from-the-hip implementation of [so-called Garber-Irish DOM-ready execution](http://viget.com/inspire/extending-paul-irishs-comprehensive-dom-ready-execution)
 for the Rails asset pipeline. Could work with other Sprockets stuff down the road, too. But for now, it's
 pretty married to Rails. Also, needs tests for the exactly four things that it does. Anyone wanna add exactly four Cucumber features?
 
