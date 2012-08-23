@@ -1,9 +1,11 @@
 require 'tilt'
-require 'sprockets'
+require 'bullseye/tilt/find_parts'
 
 module Bullseye
   module Tilt
     class BullseyeTemplate < ::Tilt::Template
+      include Bullseye::Tilt::FindParts
+
       def self.default_mime_type
         'application/javascript'
       end
@@ -12,9 +14,7 @@ module Bullseye
       end
 
       def evaluate(scope, locals, &block)
-        parts = scope.logical_path.split('/')
-        action = parts.pop
-        controller = parts[1..-1].join('/')
+        @scope = scope
 
         <<-JS
 Bullseye.target('#{controller}', '#{action}', function() {

@@ -11,3 +11,4 @@ module Sass::Script::Functions
     Sass::Script::String.new("body[data-action='#{action}'][data-controller='#{controller}']")
   end
 end
+
