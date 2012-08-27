@@ -2,10 +2,11 @@
 
 this.Bullseye = {
   target: function(controller, action, callback) {
-    this.targets = (this.targets || {});
     this.targets[controller] = (this.targets[controller] || {});
     this.targets[controller][action] = callback;
   },
+
+  targets: {},
 
   exec: function(controller, action) {
     if (this.targets[controller] && this.targets[controller][action]) {
@@ -17,8 +18,5 @@ this.Bullseye = {
 Bullseye.context = this;
 
 $(function() {
-  var controller = $('body').data('controller');
-  var action = $('body').data('action');
-
-  Bullseye.exec(controller, action);
+  Bullseye.exec($('body').data('controller'), $('body').data('action'));
 });
