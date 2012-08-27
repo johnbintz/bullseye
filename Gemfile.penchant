@@ -1,0 +1,25 @@
+# ensure git hooks are always installed
+ensure_git_hooks!
+
+# everything in the :local env is assumed to be a sibling directory of this one
+defaults_for env(:local), :path => '../%s'
+
+# reference a github repository with gem 'my-gem', :github => 'username'
+property :github, :git => 'git://github.com/$1/%s.git'
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in bullseye.gemspec
+gemspec
+
+gem 'rake'
+
+gems 'capybara', 'cucumber', 'rspec'
+
+env :local do
+  gem 'cuke-pack'
+end
+
+env :remote do
+  gem 'cuke-pack', :github => 'johnbintz'
+end
+

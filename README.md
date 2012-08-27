@@ -60,3 +60,9 @@ Want to target that page in your Sass? Use a little string interpolation and a f
 ```
 
 Piece of cake.
+
+## Hacking
+
+_You'll need to install [Penchant](http://github.com/johnbintz/penchant) to mess with the Gemfile
+during development._
+
