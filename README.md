@@ -33,6 +33,7 @@ becomes `admin/users`).
 Then, in `application.js`:
 
 ``` javascript
+//= require jquery
 //= require bullseye
 ```
 
@@ -60,6 +61,24 @@ Want to target that page in your Sass? Use a little string interpolation and a f
 ```
 
 Piece of cake.
+
+### Fuzzy search
+
+Plugging Bullseye into an existing app may require making Bullseye work a little harder to target pages.
+For instance, you can use Bullseye with ActiveAdmin to target particular actions on models.
+However, you can't really add your own `body` tag to their templates. Luckily, they do put in both
+the action and controller names in the `class` attribute of the `body` tag.
+
+Create an initializer, like `config/initializers/bullseye.rb` and add the following:
+
+``` ruby
+Bullseye.configure do |config|
+  config.fuzzy_search = %{$('body').get(0).classNames.split(/\\s+/)}
+  config.css_selector = 'body.:action.:controller'
+end
+```
+
+Then you can make your `controller/action.bullseye` files and everything should just work.
 
 ## Hacking
 

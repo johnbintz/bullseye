@@ -8,7 +8,7 @@ module Sass::Script::Functions
     action = parts.pop
     controller = parts.join('/')
 
-    Sass::Script::String.new("body[data-action='#{action}'][data-controller='#{controller}']")
+    Sass::Script::String.new(Bullseye.config.css_selector.gsub(':action', action).gsub(':controller', controller))
   end
 end
 

@@ -1,0 +1,54 @@
+this.Bullseye = {
+  target: function(controller, action, callback) {
+    this.targets[controller] = (this.targets[controller] || {});
+    this.targets[controller][action] = callback;
+  },
+
+  targets: {},
+
+  exec: function() {
+    var controller, action;
+
+    switch (arguments.length) {
+      case 2:
+        controller = arguments[0];
+        action = arguments[1];
+        break;
+
+      case 1:
+        choices = arguments[0];
+
+        choice_loop:
+        for (controller_i = 0; controller_i < choices.length; ++controller_i) {
+          controller = choices[controller_i];
+          if (this.targets[controller]) {
+            for (action_i = 0; action_i < choices.length; ++action_i) {
+              action = choices[action_i];
+
+              if (this.targets[controller][action]) {
+                break choice_loop;
+              }
+            }
+          }
+        }
+        break;
+    }
+
+    if (this.targets[controller] && this.targets[controller][action]) {
+      this.targets[controller][action].apply(this.context);
+    }
+  }
+};
+
+Bullseye.context = this;
+
+$(function() {
+  Bullseye.exec(
+    <% if Bullseye.config.fuzzy_search %>
+      <%= Bullseye.config.fuzzy_search %>
+    <% else %>
+      <%= Bullseye.config.js_controller_search %>,
+      <%= Bullseye.config.js_action_search %>
+    <% end %>
+  );
+});
