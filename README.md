@@ -52,6 +52,14 @@ alert("I am showing a site");
 alert "I am also showing a site"
 ```
 
+Want to use the same JavaScript for two actions, say `new` and `edit`? Put both actions in the filename separated by a dash:
+
+``` coffeescript
+# app/assets/javascripts/bullseye/sites/new-edit.bullseye.coffee
+
+alert "I appear on both the new and edit actions"
+```
+
 Want to target that page in your Sass? Use a little string interpolation and a function that generates a selector:
 
 ``` sass

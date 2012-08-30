@@ -1,8 +1,8 @@
 module Bullseye
   module Tilt
     module FindParts
-      def action
-        parts.last
+      def actions
+        parts.last.split('-')
       end
 
       def controller

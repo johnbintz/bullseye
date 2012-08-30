@@ -1,5 +1,6 @@
 require 'tilt'
 require 'bullseye/tilt/find_parts'
+require 'json'
 
 module Bullseye
   module Tilt
@@ -17,7 +18,7 @@ module Bullseye
         @scope = scope
 
         <<-JS
-Bullseye.target('#{controller}', '#{action}', function() {
+Bullseye.target('#{controller}', #{actions.to_json}, function() {
   #{data}
 });
         JS

@@ -1,7 +1,11 @@
 this.Bullseye = {
-  target: function(controller, action, callback) {
+  target: function(controller, actions, callback) {
     this.targets[controller] = (this.targets[controller] || {});
-    this.targets[controller][action] = callback;
+
+    var actions_i;
+    for (actions_i = 0; actions_i < actions.length; ++actions_i) {
+      this.targets[controller][actions[actions_i]] = callback;
+    }
   },
 
   targets: {},
