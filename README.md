@@ -83,13 +83,30 @@ Create an initializer, like `config/initializers/bullseye.rb` and add the follow
 Bullseye.configure do |config|
   config.fuzzy_search = %{$('body').get(0).classNames.split(/\\s+/)}
   config.css_selector = 'body.:action.:controller'
+  config.html_tag = { 'class' => ':action :controller' }
 end
 ```
 
 Then you can make your `controller/action.bullseye` files and everything should just work.
 
+## Force the name of the controller/action
+
+For things like error handling in `rescue_from`, you can force the `action` and `controller` that
+Bullseye will use:
+
+``` ruby
+rescue_from StandardError do |e|
+  bullseye_target 'application/errors/http_500'
+
+  render 'http_500'
+end
+```
+
+This will resolve to the controller `application/errors` and the action `http_500` in the Bullseye
+HTML `body` tag for that page.
+
 ## Hacking
 
 _You'll need to install [Penchant](http://github.com/johnbintz/penchant) to mess with the Gemfile
-during development._
+during development.
 

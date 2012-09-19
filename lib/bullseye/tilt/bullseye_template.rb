@@ -1,11 +1,11 @@
 require 'tilt'
-require 'bullseye/tilt/find_parts'
+require 'bullseye/find_parts'
 require 'json'
 
 module Bullseye
   module Tilt
     class BullseyeTemplate < ::Tilt::Template
-      include Bullseye::Tilt::FindParts
+      include Bullseye::FindParts
 
       def self.default_mime_type
         'application/javascript'
@@ -15,7 +15,7 @@ module Bullseye
       end
 
       def evaluate(scope, locals, &block)
-        @scope = scope
+        @source = scope.logical_path[1..-1]
 
         <<-JS
 Bullseye.target('#{controller}', #{actions.to_json}, function() {
