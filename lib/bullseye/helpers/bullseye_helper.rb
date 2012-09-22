@@ -15,7 +15,7 @@ module Bullseye
       end
 
       def __bullseye_controller
-        @__bullseye_controller || controller_path
+        @__bullseye_controller || controller_path.gsub('/', '-')
       end
     end
   end
