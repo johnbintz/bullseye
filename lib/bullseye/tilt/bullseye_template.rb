@@ -15,7 +15,7 @@ module Bullseye
       end
 
       def evaluate(scope, locals, &block)
-        @source = scope.logical_path[1..-1]
+        @source = scope.logical_path.gsub(%r{^[^/]*/}, '')
 
         <<-JS
 Bullseye.target('#{controller}', #{actions.to_json}, function() {

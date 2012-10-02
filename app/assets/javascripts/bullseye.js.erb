@@ -38,6 +38,8 @@ this.Bullseye = {
         break;
     }
 
+    controller = controller.replace('/', '-');
+
     if (this.targets[controller] && this.targets[controller][action]) {
       this.targets[controller][action].apply(this.context);
     }

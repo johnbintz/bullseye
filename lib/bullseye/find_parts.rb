@@ -11,7 +11,7 @@ module Bullseye
     end
 
     def parts
-      @source.split('/')
+      @parts ||= @source.split('/')
     end
 
     class PartFinder
