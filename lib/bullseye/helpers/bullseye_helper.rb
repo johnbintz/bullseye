@@ -15,7 +15,7 @@ module Bullseye
       end
 
       def __bullseye_controller
-        @__bullseye_controller || controller_path
+        @__bullseye_controller || controller_path.gsub('/', Bullseye::FindParts::SEPARATOR)
       end
     end
   end
