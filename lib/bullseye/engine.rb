@@ -1,5 +1,6 @@
 require 'bullseye/helpers/bullseye_helper'
 require 'bullseye/helpers/bullseye_controller_helper'
+require 'rails/generators'
 
 module Bullseye
   class Engine < ::Rails::Engine
